@@ -24,4 +24,7 @@ Ping.prototype.destroy = function() {
   // release resources
 }
 
+// default configs export to datahub
+Ping.config = require('./config');
+
 module.exports = Ping;
