@@ -1,18 +1,18 @@
 
 function Ping(config, hub, router) {
 
-  var greeting = config.greeting;
+  this.greeting = config.greeting;
 
-  hub.once('plugin-init', function(event) {
+  hub.once('plugin-init', function() {
 
     router.get('/', function(req, res) {
-      res.end('Pong! ' + greeting + '\n');
+      res.end('Pong! ' + this.greeting + '\n');
     });
 
   });
 
   hub.on('plugin:ping:*', function(txt) {
-    greeting = txt;
+    this.greeting = txt;
 
     console.log('greeting set to ', txt);
   });
