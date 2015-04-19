@@ -1,5 +1,5 @@
 
-function Ping(config, hub, router) {
+function Ping(config, hub, router, log) {
 
   var _this = this;
   _this.greeting = config.greeting;
@@ -15,13 +15,14 @@ function Ping(config, hub, router) {
   hub.on('plugin:ping:*', function(txt) {
     _this.greeting = txt;
 
-    console.log('greeting set to ', txt);
+    log('greeting set to ', txt);
   });
 
-}
+  hub.once('destroy', function() {
+    // do some clean job
+    log('plugin ping is on destroy');
+  });
 
-Ping.prototype.destroy = function() {
-  // release resources
 }
 
 // default configs export to datahub
