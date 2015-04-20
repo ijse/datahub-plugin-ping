@@ -13,11 +13,6 @@ function Ping(config) {
     _this.greeting = txt;
   });
 
-  this.once('destroy', function() {
-    // destroy
-    this.logger('destroy ping plugin', arguments);
-  });
-
 }
 
 Ping.prototype.destroy = function() {
