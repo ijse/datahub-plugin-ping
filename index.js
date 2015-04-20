@@ -8,7 +8,7 @@ function Ping(config) {
     res.end('Pong! ' + _this.greeting + '\n');
   });
 
-  this.on('setGreeting', function(txt) {
+  this.on('*', function(txt) {
     // each message sended to me
     _this.greeting = txt;
   });
