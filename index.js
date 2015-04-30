@@ -21,6 +21,10 @@ Ping.config = require('./config');
  */
 function Ping(config) {
 
+  // this.on('error', function(e) {
+  //   console.log(e);
+  // });
+
   // custom plugin attribute
   this.greeting = config.greeting;
 
@@ -50,6 +54,14 @@ function Ping(config) {
   this.on('*', function(txt) {
     // each message sended to me
     this.greeting = txt;
+  }.bind(this));
+
+  this.on('testError', function() {
+    // throw new Error('boom');
+    var er = new Error('boom');
+    er.name = "testError";
+    er.data = { test: 'name' };
+    this.emit('error', er);
   }.bind(this));
 
 }
