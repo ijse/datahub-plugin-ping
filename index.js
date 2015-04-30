@@ -54,6 +54,8 @@ function Ping(config) {
   this.on('*', function(txt) {
     // each message sended to me
     this.greeting = txt;
+
+    this.logger('the greeting is set to %s', txt);
   }.bind(this));
 
   this.on('testError', function() {
