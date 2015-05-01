@@ -1,8 +1,8 @@
-
-
 /**
  * Default plugin configs
  *   read by pluginLoader for initializing the plugin
+ *
+ * namespace: datahub:plugin:ping
  *
  * @type {object}
  */
@@ -21,6 +21,7 @@ Ping.config = require('./config');
  */
 function Ping(config) {
 
+  // Handle error by self
   // this.on('error', function(e) {
   //   console.log(e);
   // });
@@ -28,6 +29,7 @@ function Ping(config) {
   // custom plugin attribute
   this.greeting = config.greeting;
 
+  // visit /ping
   this.route.get('/', function(req, res) {
     res.end('Pong! ' + this.greeting + '\n');
   }.bind(this));
@@ -50,7 +52,6 @@ function Ping(config) {
   // Wildcards and scopes are avaliable. The delimiter is `:`.
   // The event name 'echo:*' is valid for `.emit('plugin:ping:echo:somebody')`.
   // And `*` is to match any.
-  //
   this.on('*', function(txt) {
     // each message sended to me
     this.greeting = txt;
