@@ -34,6 +34,11 @@ function Ping(config) {
     res.end('Pong! ' + this.greeting + '\n');
   }.bind(this));
 
+  // send file content
+  this.route.get('/index', function(req, res) {
+    res.sendfile('./view/index.html', { root: __dirname });
+  });
+
   // custom plugin listener
   //  for all messages under the scope of `plugin:{pluginName}:*`
   //
