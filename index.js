@@ -36,7 +36,7 @@ function Ping(config) {
 
   // send file content
   this.route.get('/index', function(req, res) {
-    res.sendfile('./view/index.html', { root: __dirname });
+    res.sendFile('./view/index.html', { root: __dirname });
   });
 
   // custom plugin listener
